@@ -3,10 +3,10 @@ var StringBinding = require("sharedb-string-binding");
 
 // Open WebSocket connection to ShareDB server
 var ReconnectingWebSocket = require("reconnecting-websocket");
-var socket = new ReconnectingWebSocket("ws://localhost:3000");
+var socket = new ReconnectingWebSocket("ws://101.132.133.236:3000");
 var connection = new sharedb.Connection(socket);
 
-var element = document.querySelector("v-textarea");
+var element = document.querySelector("textarea");
 var statusSpan = document.getElementById("status-span");
 statusSpan.innerHTML = "Not Connected";
 
@@ -27,8 +27,8 @@ socket.addEventListener("error", function () {
 });
 
 // Create local Doc instance mapped to 'docs' collection document with id
-console.log(window.location.pathname)
-var doc = connection.get("docs", window.location.pathname);
+console.log(window.location.pathname.split('/')[2])
+var doc = connection.get("docs", window.location.pathname.split('/')[2]);
 doc.subscribe(function (err) {
   if (err) throw err;
 

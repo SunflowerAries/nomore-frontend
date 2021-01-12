@@ -18,7 +18,6 @@
           autofocus
           outlined
           name="input-7-4"
-          label="Content"
           value=""
         ></v-textarea>
       </v-col>
@@ -26,23 +25,21 @@
   </v-container>
 </template>
 
-<script src="../../static/dist/bundle.js"></script>
 
-
-// <script>
-// export default {
-//   data() {
-//     return {
-//       message: false,
-//     };
-//   },
-//   mounted() {
-//     let recaptchaScript = document.createElement("script");
-//     recaptchaScript.setAttribute("src", "../../bundle.js");
-//     document.head.appendChild(recaptchaScript);
-//   },
-// };
-// </script>
+<script>
+export default {
+  data() {
+    return {
+      message: false,
+    };
+  },
+  mounted() {
+    let recaptchaScript = document.createElement("script");
+    recaptchaScript.setAttribute("src", "../../bundle.js");
+    document.head.appendChild(recaptchaScript);
+  },
+};
+</script>
 
 <style src="../../css/bootstrap.min.css"></style>
 

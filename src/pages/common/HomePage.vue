@@ -3,7 +3,7 @@
     <v-container>
       <v-list rounded>
         <v-list-item-group color="primary">
-          <v-list-item v-for="(item, index) in docs" :key="index" :to="`/docs/${item.docName}`">
+          <v-list-item v-for="(item, index) in docs" :key="index" :to="`/docs/${item.id}`">
             <v-list-item-avatar>
               <v-icon
                 :class="'blue'"
@@ -12,7 +12,7 @@
               ></v-icon>
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title v-text="item.docName" />
+              <v-list-item-title v-text="item.id" />
               <v-list-item-subtitle v-text="item.time"></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
@@ -127,12 +127,8 @@ export default {
       } else {
         this.getDocsInfo();
         docsService.createDoc(this.newDocName).then((resp) => {
-          if (resp.message) {
-            this.showSnackbar("error", resp.message);
-            console.log(resp);
-          }
+          this.$router.push(`/docs/${resp.docName}`);
         });
-        this.$router.push(`/docs/${this.newDocName}`);
       }
     },
   },
